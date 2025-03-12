@@ -27,11 +27,6 @@ public class PlayerController : MonoBehaviour
     private RaycastHit rightHit;
     private RaycastHit leftHit;
     
-    public void UpdatePlayerMaxSpeed(float speed)
-    {
-        maxSpeed = speed;
-    }
-    
     private void Awake()
     {
         inputManager.OnMove.AddListener(MovePlayer);
@@ -117,6 +112,12 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         rb.linearVelocity = Vector3.zero;
         rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+    }
+
+    public void UpdatePlayerMaxSpeed(float speed)
+    {
+        Debug.Log($"Updated maxSpeed to: {speed}");
+        maxSpeed = speed;
     }
 
 }
